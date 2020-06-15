@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 10px}
+        .login_div0{
+            float: left;
+            text-align: left;
+            margin-top: 20px;
+            margin-left: 0px;
+            position: absolute;
+            width: 150px;
+            height: 400px;
+        }
+        .login_div0 div input{font-size: 10px}
+        .place1{float: left;margin-top: 20px;margin-left: 50px}
+    </style>
+</head>
+<body>
+<div class="login_div0">
+<div class="login_div1">
+    <input type="button"  id="teacher_login"value="教师信息">
+</div>
+<div class="login_div3">
+
+    <input type="button" id="student_login1"value="选课名单" >
+</div>
+<div>
+    <input type="button"value="教学安排" >
+</div>
+<div>
+    <input type="button"value="上课课表" >
+</div>
+<div>
+    <input id="back_t" type="button"value="退出登录" >
+</div>
+
+</div>
+<div class="place1" id="place"></div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>  $(document).ready(function(){
+        $("#student_login1").click(function(){
+            $("#place").load("/select1");
+        });
+    });</script>
+<script>
+    var back_t=document.getElementById("back_t");
+    back_t.onclick=function () {
+        location.href="/login"
+    }
+</script>
+</html>

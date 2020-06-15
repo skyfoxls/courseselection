@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        <!--*{-->
+            <!--margin: 0;-->
+            <!--padding: 0;-->
+        <!--}-->
+        <!--body{-->
+            <!--font-size: 10px}-->
+        <!--.login_div0{-->
+            <!--float: left;-->
+            <!--text-align: left;-->
+            <!--margin-top: 20px;-->
+            <!--margin-left: 0px;-->
+            <!--position: absolute;-->
+            <!--width: 150px;-->
+            <!--height: 400px;-->
+        <!--}-->
+        <!--.login_div0 div input{font-size: 10px}-->
+        .place1{margin-left: 100px}
+    </style>
+</head>
+<body>
+<div class="login_div0">
+<div class="login_div1">
+
+    <input type="button"  id="teacher_login"value="学生学籍">
+</div>
+<div class="login_div3">
+
+    <input type="button" id="student_selection"value="学生选课" >
+</div>
+<div>
+    <input type="button"value="学生成绩" >
+</div>
+<div>
+    <input type="button"value="学生课表" >
+</div>
+
+<div>
+    <input id="back_s" type="button"value="退出登录" >
+</div>
+</div>
+
+<div class="place1" id="stm_div"></div>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+    $("#student_selection").click(function(){
+        $("#stm_div").load("/select");
+    });
+    });
+</script>
+<script>
+    var back_s=document.getElementById("back_s");
+    back_s.onclick=function (ev) {
+        location.href="/login"
+    }
+</script>
+</html>

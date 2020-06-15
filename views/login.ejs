@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        .login_div{
+            margin-top: 25%;
+           text-align: center;
+        }
+     body{background-image: url("/timg13.png")}
+    </style>
+</head>
+<body>
+<div class="loginimg"></div>
+<div class="login_div">
+<div class="login_div1">
+    <input type="button"  id="teacher_login"value="教师登录入口">
+</div>
+<div class="login_div3">
+    <input type="button" id="student_login"value="学生登录入口" >
+</div>
+</div>
+
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+   var btn1=document.getElementById("teacher_login")
+   var btn2=document.getElementById("student_login")
+    btn1.onclick=function (ev) {
+       location.href="/tcher_login"
+    }
+    btn2.onclick=function (ev) {
+       location.href="/sts_login"
+    }
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>选择</th>
+        <th>课程代号</th>
+        <th>课程</th>
+        <th>学时</th>
+        <th>任课老师</th>
+    </tr>
+    <% for(var i=0; i<arr.length; i++){ %>
+    <tr>
+        <td><%= arr[i].radio %></td>
+        <td><%= arr[i].number %></td>
+        <td><%= arr[i].coursename %></td>
+        <td><%= arr[i].time %></td>
+        <td><%= arr[i].teachername%></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

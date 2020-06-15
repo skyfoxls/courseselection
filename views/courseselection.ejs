@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        body{font-size: 10px}
+        div input{font-size: 10px}
+    </style>
+</head>
+
+<body>
+<div>
+    <select id="accountStatus">
+        <option value ="大学一年级">大学一年级</option>
+        <option value ="大学二年级">大学二年级</option>
+        <option value="大学三年级">大学三年级</option>
+        <option value="大学四年级">大学四年级</option>
+    </select>
+    <input type="button" id="btn_c" value="查询">
+    <input type="button" id="btn_q" value="确认选课"onclick="getchbox()">
+</div>
+<div id="course1">
+
+</div>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    var accountStatus = $("#accountStatus option:selected").text();
+    var btnq=document.getElementById("btn_q")
+    $(document).ready(function(){
+        $("#btn_c").click(function(){
+
+            if(accountStatus=="大学一年级")
+            $("#course1").load("/course");
+            else if(accountStatus=="大学二年级")
+                $("#course1").load("/course1");
+            else if(accountStatus=="大学三年级")
+                $("#course1").load("/course2");
+            else{$("#course1").load("/course3");}
+        });
+    });
+
+</script>
+</html>

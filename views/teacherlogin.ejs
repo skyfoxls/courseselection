@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        body{font-size: 10px}
+        .login_div1{
+            text-align: center;
+            margin-top: 100px;
+        }
+        .login_div2{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div3{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div4{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div4 input{font-size: 10px}
+    </style>
+</head>
+<body>
+
+<div class="login_div1">
+    <span>教师用户名：</span>
+    <input type="text"  id="teacher_login"value="">
+</div>
+<div class="login_div2">
+    <span>教职工号：</span>
+    <input type="text"  id="teacher_number"value="">
+</div>
+<div class="login_div3">
+    <span>教师密码：</span>
+    <input type="password" id="teacher_pwd"value="" >
+</div>
+<div class="login_div4">
+    <input id="btn5" type="button"value="登录" >
+</div>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $("#btn5").click(function () {
+        $.post("/tcher_login", {
+            "name":$("#teacher_login").val(),
+            "card":$("#teacher_number").val(),
+            "pwd":$("#teacher_pwd").val(),
+        }, function (data) {  // data是服务器返回的数据
+            if(data == "1"){
+                location.href="/teachermain"
+            }else if(data=="-1"){
+                alert("用户名或密码错误~")
+            }
+        });
+    });
+</script>
+</html>

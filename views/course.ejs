@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>选择</th>
+        <th>课程代号</th>
+        <th>课程</th>
+        <th>学时</th>
+        <th>任课老师</th>
+    </tr>
+    <% for(var i=0; i<arr.length; i++){ %>
+    <tr>
+        <td>
+            <!--<input type="radio" name="<%= arr[i].coursename%>" value="是">是-->
+            <!--<input type="radio" name="<%= arr[i].coursename%>" value="否">否-->
+            <input  id="cxs" type="checkbox" name="chex" value="<%= arr[i].coursename%>">
+        </td>
+        <td><%= arr[i].number%></td>
+        <td><%= arr[i].coursename%></td>
+        <td><%= arr[i].time%></td>
+        <td><%= arr[i].teachername%></td>
+    </tr>
+    <% } %>
+</table>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+function getchbox() {
+  var arr=[];
+  $('input[name="chex"]').each(function () {
+      var state=$(this).prop('checked');
+      if(state){
+          arr.push($(this).val());
+          alert(arr.toString());
+          $.post("/taecherstscourse", {
+              "coursename":arr.toString(),
+          }, function (data7) {  // data是服务器返回的数据
+              if(data7==null){
+                  alert("查询失败~")
+              }else{
+                  $.post("/add1", function (data5) {
+                     if(data5==null){
+                         alert("查询失败111~")
+                      }
+                      else{ $.post("/add", {
+                         "name":data5.name,
+                         "stunumber":data5.stunumber,
+                         "number":data7.number,
+                         "coursename":data7.coursename,
+                         "time":data7.time,
+                         "teachername":data7.teachername,
+                     },function (data3) {
+                         if(data3=="1")
+                             console.log("1")
+                     });}
+                  });
+
+              }
+          });
+          arr.pop($(this).val());
+      }
+  });
+
+}
+// function getchbox() {
+//   var arr=[];
+//   $('input[name="chex"]').each(function () {
+//       var state=$(this).prop('checked');
+//       if(state){
+//           arr.push($(this).val());
+//           alert(arr.toString());
+//           $.post("/taecherstscourse", {
+//               "coursename":arr.toString(),
+//           }, function (data7) {  // data是服务器返回的数据
+//               if(data7==null){
+//                   alert("查询失败~")
+//               }else{
+//                        $.post("/add",
+//                            {
+//                          "number":"1",
+//                          "coursename":data7.coursename,
+//                          "time":data7.time,
+//                          "teachername":data7.teachername,
+//                      },function (data3) {
+//                          if(data3==null)
+//                              console.log("1")
+//                      });
+//
+//
+//               }
+//           });
+//
+//       }
+//   });
+//
+// }
+
+
+
+</script>
+</html>

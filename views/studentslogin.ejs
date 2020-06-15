@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>学生选课系统</title>
+    <style>
+        body{font-size: 10px}
+        .login_div1{
+            text-align: center;
+            margin-top: 100px;
+        }
+        .login_div2{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div3{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div4{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login_div4 input{font-size: 10px}
+    </style>
+</head>
+<body>
+<div class="loginimg"></div>
+<div class="login_div1">
+    <span>学生用户：</span>
+    <input type="text"id="student_name"name="sts1" value="">
+</div>
+<div class="login_div2">
+    <span>学生学号：</span>
+    <input type="text"  id="student_number" name="stslogin1" value="">
+</div>
+<div class="login_div3">
+    <span>学生密码：</span>
+    <input type="password" id="student_pwd"  value="" >
+</div>
+<div class="login_div4">
+    <input id="btn4" type="button"value="登录">
+</div>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $("#btn4").click(function () {
+        $.post("/sts_login", {
+            "name":$("#student_name").val(),
+            "number":$("#student_number").val(),
+            "pwd":$("#student_pwd").val(),
+        }, function (data1) {  // data是服务器返回的数据
+            if(data1 == "1"){
+                $.post("/delt",function (data10){
+                    if(data10=="1")
+                    {
+                    }
+                })
+                $.post("/stsloginway", {
+                    "name":$("#student_name").val(),
+                    "stunumber":$("#student_number").val(),
+                },function (data4) {
+                    if(data4=="1")
+                        console.log("1")
+                });
+                location.href="/main";
+            }else{
+                alert("插入异常~")
+            }
+        });
+    });
+</script>
+</html>
